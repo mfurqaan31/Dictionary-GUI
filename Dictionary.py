@@ -16,26 +16,30 @@ def Find():
     text.config(state=NORMAL)
     text.delete(1.0,END)
     data=entry.get()
-    meaning=wordnet.synsets(data)
-
-    if not meaning:
-        text.insert(END,"The word "+data+" does not exist")    
-
+    if not data:
+        text.insert(END,"Please enter a word")
     else:
-        text.insert(END,"The meaning of "+data+" is:\n")
-    
-        for i in meaning:
-            x=i.definition()
-            text.insert( END,("->"+x+"\n") ) 
-        text.insert(END,"\n")
-        text.insert(END,"The synonyms of "+data+" are:\n")
+        meaning=wordnet.synsets(data)
 
-        for i in meaning:
-            for j in i.lemmas():
-                x=j.name()
-                text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
+        if not meaning:
+            text.insert(END,"The word "+data+" does not exist")    
+
+        else:
+            text.insert(END,"The meaning of "+data+" is:\n")
+    
+            for i in meaning:
+                x=i.definition()
+                text.insert( END,("->"+x+"\n") ) 
+            text.insert(END,"\n")
+            text.insert(END,"The synonyms of "+data+" are:\n")
+
+            for i in meaning:
+                for j in i.lemmas():
+                    x=j.name()
+                    text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
     
     text.config(state=DISABLED)
+
 
 def Exit():
     sys.exit()
