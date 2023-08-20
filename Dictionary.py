@@ -1,7 +1,6 @@
 import sys
 from tkinter import*
-from tkinter import ttk
-from tkinter import scrolledtext
+from tkinter import ttk, scrolledtext
 import nltk
 from nltk.corpus import wordnet
 
