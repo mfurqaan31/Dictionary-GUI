@@ -22,7 +22,7 @@ def Find():
         meaning=wordnet.synsets(data)
 
         if not meaning:
-            text.insert(END,"The word "+data+" does not exist")    
+            text.insert(END,"The meaning of the word "+data+" does not exist")    
 
         else:
             text.insert(END,"The meaning of "+data+" is:\n")
