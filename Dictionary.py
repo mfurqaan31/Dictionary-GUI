@@ -21,7 +21,7 @@ def Find():
         meaning=wordnet.synsets(data)
 
         if not meaning:
-            text.insert(END,"The meaning of the word "+data+" does not exist")    
+            text.insert(END,"The Meaning of the word "+data+" does not exist")    
 
         else:
             text.insert(END,"The meaning of "+data+" is:\n")
@@ -35,8 +35,18 @@ def Find():
             for i in meaning:
                 for j in i.lemmas():
                     x=j.name()
-                    text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
+                    if "_" in x:
+                        text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
+                    if "-" in x:
+                        text.insert(END, ( (x+"\n").replace( "-"," ") ) ) 
+                    else:
+                        text.insert(END,  (x+"\n") ) 
     
+    text.config(state=DISABLED)
+
+def clear():
+    text.config(state=NORMAL)
+    text.delete(1.0,END)
     text.config(state=DISABLED)
 
 
@@ -60,9 +70,12 @@ button=Button(root,text="Next",bg="black",fg="#cfff04",font=40, command=Find)
 button.pack()
 
 text=scrolledtext.ScrolledText(root, height=20, width=65, wrap=WORD, state=DISABLED)
-text.pack(pady=30)
+text.pack(pady=20)
 
-exiting=Button(root, text="Quit",bg="black",fg="#cfff04",font=40, command=Exit)
-exiting.pack()
+clear_button=Button(root, text="Clear", font=40, command=clear, fg="#cfff04", bg="black")
+clear_button.pack()
+
+exiting=Button(root, text="Quit",bg="black",fg="#cfff04",font=90, command=Exit)
+exiting.pack(pady=20)
 
 root.mainloop()
