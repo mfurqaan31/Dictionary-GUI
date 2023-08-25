@@ -37,7 +37,7 @@ def Find():
                     x=j.name()
                     if "_" in x:
                         text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
-                    if "-" in x:
+                    elif "-" in x:
                         text.insert(END, ( (x+"\n").replace( "-"," ") ) ) 
                     else:
                         text.insert(END,  (x+"\n") ) 
