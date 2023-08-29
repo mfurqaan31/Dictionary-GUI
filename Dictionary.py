@@ -28,20 +28,24 @@ def Find():
     
             for i in meaning:
                 x=i.definition()
-                text.insert( END,("->"+x+"\n") ) 
+                text.insert( END,("->"+x+"\n"+"\n") ) 
             text.insert(END,"\n")
             text.insert(END,"The synonyms of "+data+" are:\n")
-
+            mylist=[]
             for i in meaning:
                 for j in i.lemmas():
                     x=j.name()
                     if "_" in x:
-                        text.insert(END, ( (x+"\n").replace( "_"," ") ) ) 
+                        x=x.replace("_"," ")
+                        mylist.append(x)
                     elif "-" in x:
-                        text.insert(END, ( (x+"\n").replace( "-"," ") ) ) 
+                        x=x.replace("-"," ")
+                        mylist.append(x)
                     else:
-                        text.insert(END,  (x+"\n") ) 
-    
+                        mylist.append(x)
+            mylist=set(mylist)
+            for i in mylist:
+                text.insert(END,(i+"\n"))
     text.config(state=DISABLED)
 
 def clear():
