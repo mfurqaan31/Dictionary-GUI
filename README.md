@@ -25,7 +25,7 @@ python Dictionary.py
 -Use the "Clear" button to clear the output and the "Quit" button to exit from the window.
 
 # Screenshots
-![SC](https://github.com/mfurqaan31/Dictionary-GUI/assets/141869941/c02e95fe-d794-470f-ba10-5b063af72eb8)
+<img src="sc.png">
 
 
 # Follow me and Star ⭐ my Repository
