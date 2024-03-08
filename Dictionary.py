@@ -3,6 +3,7 @@ from tkinter import*
 from tkinter import ttk, scrolledtext
 import nltk
 from nltk.corpus import wordnet
+nltk.download('wordnet')
 
 root=Tk()
 root.title("Dictionary")
